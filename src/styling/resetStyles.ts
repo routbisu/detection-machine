@@ -137,6 +137,7 @@ const resetStyles = css`
   input,
   button {
     outline: none;
+    border-radius: 0px;
   }
 `
 
