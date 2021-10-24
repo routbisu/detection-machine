@@ -64,7 +64,7 @@ function Table<T extends { id: string }>({
         </tr>
       </thead>
       <tbody>
-        {data ? (
+        {data?.length ? (
           data.map((row, i) => (
             <tr key={i}>
               {onSelect && (

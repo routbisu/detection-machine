@@ -1,15 +1,22 @@
+export enum Pages {
+  Images = 'IMAGES',
+  Predictions = 'PREDICTIONS',
+}
+
 export type MenuItem = {
-  key: string
+  key: Pages
   label: string
 }
 
 export const menuItems: MenuItem[] = [
   {
-    key: 'IMAGES',
+    key: Pages.Images,
     label: 'Upload Images',
   },
   {
-    key: 'PREDICTION',
+    key: Pages.Predictions,
     label: 'Prediction',
   },
 ]
+
+export const OpenVisionServer = `http://localhost:8000/api/v1/detection`

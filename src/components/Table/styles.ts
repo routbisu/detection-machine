@@ -13,7 +13,7 @@ export const TableWrapper = styled('table')`
   thead {
     border: 1px solid ${colors.gray[100]};
     font-size: 0.9rem;
-    font-weight: 500;
+    font-weight: 600;
     text-align: left;
 
     th {
@@ -43,5 +43,5 @@ export const NoData = styled('div')`
   border: 1px solid ${colors.yellow[300]};
   text-align: center;
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 600;
 `
