@@ -5,25 +5,27 @@ import UploadButton from '../../../components/UploadButton/UploadButton'
 import Button from '../../layout/Button'
 import { ButtonsContainer, PredictButtonSection } from './styles'
 
-const imageTableHeaders: { key: keyof TableDataProps; label: string }[] = [
+const imageTableHeaders: any = [
   { key: 'name', label: 'Name' },
   { key: 'size', label: 'File size' },
   { key: 'time', label: 'Uploaded at' },
+  { actionButtonText: 'Predict' },
 ]
 
 type TableDataProps = {
+  id: string
   name: string
   size: string
   time: string
 }
 
 const tableData = [
-  { name: 'Name1', size: '120', time: '23 Aug' },
-  { name: 'Name1', size: '120', time: '23 Aug' },
-  { name: 'Name1', size: '120', time: '23 Aug' },
-  { name: 'Name1', size: '120', time: '23 Aug' },
-  { name: 'Name1', size: '120', time: '23 Aug' },
-  { name: 'Name1', size: '120', time: '23 Aug' },
+  { id: '1', name: 'Name1', size: '120', time: '23 Aug' },
+  { id: '2', name: 'Name1', size: '120', time: '23 Aug' },
+  { id: '3', name: 'Name1', size: '120', time: '23 Aug' },
+  { id: '4', name: 'Name1', size: '120', time: '23 Aug' },
+  { id: '5', name: 'Name1', size: '120', time: '23 Aug' },
+  { id: '6', name: 'Name1', size: '120', time: '23 Aug' },
 ]
 
 const ImageUpload: React.FC = () => {
@@ -41,7 +43,7 @@ const ImageUpload: React.FC = () => {
         </PredictButtonSection>
       </ButtonsContainer>
 
-      <Table<TableDataProps> headerItems={imageTableHeaders} data={tableData} />
+      <Table<TableDataProps> headerItems={imageTableHeaders} data={tableData} onSelect={(rows) => console.log(rows)} />
     </Section>
   )
 }

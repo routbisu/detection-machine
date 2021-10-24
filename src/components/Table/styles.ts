@@ -27,4 +27,12 @@ export const TableWrapper = styled('table')`
       border: 1px solid ${colors.gray[100]};
     }
   }
+
+  input[type='checkbox'] {
+    cursor: pointer;
+  }
+`
+
+export const SmallCell = styled('td')`
+  width: ${space[0.5]};
 `
