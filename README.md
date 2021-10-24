@@ -17,7 +17,7 @@ node -v
 
 - Clone the repo
 - cd into the folder
-- Run the npm install and run commands
+- Run these npm commands
 
 ```
 npm install
