@@ -2,20 +2,24 @@ import { useState } from 'react'
 import { Image } from '../components/pages/ImageUpload/ImageUpload'
 import { OpenVisionServer } from '../config'
 
+export type Coorindinates = {
+  x1: number
+  x2: number
+  y1: number
+  y2: number
+}
+
+export type PredictionData = {
+  bbox: Coorindinates
+  label?: string
+  score: number
+}
+
 export type Prediction = {
   id: string
   title?: string
   description?: string
-  predictions?: {
-    bbox?: {
-      x1?: number
-      x2?: number
-      y1?: number
-      y2?: number
-    }
-    label?: string
-    score?: number
-  }[]
+  predictions: PredictionData[]
   timestamp?: string
   url?: string
 }

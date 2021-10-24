@@ -3,6 +3,8 @@ const colors = {
   whiteWithOpacity: `rgba(255, 255, 255, 0.9)`,
   black: '#050505',
   transparent: 'transparent',
+  highlight: '#76E05A',
+  hightlightBg: 'rgba(147, 165, 90, 0.3)',
   gray: {
     50: '#F8F8F9',
     100: '#F1F2F3',

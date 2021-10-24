@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Prediction } from '../../../hooks/usePrediction'
 import Section from '../../layout/Section'
 import Table from '../../Table/Table'
+import PredictionVisualizer from './PredictionVisualizer'
 
 type PredictionsProp = {
   predictions?: Prediction[]
@@ -20,14 +21,19 @@ const Predictions: React.FC<PredictionsProp> = ({ resetPredictions, predictions 
     resetPredictions()
   }, [resetPredictions])
 
+  const [selectedPrediction, setSelectedPrediction] = useState<Prediction>()
+
   return (
     <Section>
       <Table<Prediction>
         noDataText="No images uploaded"
         headerItems={predictionTableHeaders}
         data={predictions}
-        onActionCall={(id) => console.log(id)}
+        onActionCall={(id) => setSelectedPrediction(predictions?.find((prediction) => prediction.id === id))}
       />
+      {selectedPrediction && (
+        <PredictionVisualizer prediction={selectedPrediction} onClose={() => setSelectedPrediction(undefined)} />
+      )}
     </Section>
   )
 }
