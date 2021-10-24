@@ -33,3 +33,7 @@ It can be changed here if required.
 ```js
 export const OpenVisionServer = `http://localhost:8000/api/v1/detection`
 ```
+
+### Demo
+
+[![Screencast](https://img.youtube.com/vi/Qz1lougYj60/0.jpg)](https://www.youtube.com/watch?v=Qz1lougYj60)
