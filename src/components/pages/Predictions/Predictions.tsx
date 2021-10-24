@@ -26,7 +26,7 @@ const Predictions: React.FC<PredictionsProp> = ({ resetPredictions, predictions 
   return (
     <Section>
       <Table<Prediction>
-        noDataText="No images uploaded"
+        noDataText="No predictions available"
         headerItems={predictionTableHeaders}
         data={predictions}
         onActionCall={(id) => setSelectedPrediction(predictions?.find((prediction) => prediction.id === id))}

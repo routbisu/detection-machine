@@ -1,6 +1,7 @@
 const colors = {
   white: '#FFFFFF',
   whiteWithOpacity: `rgba(255, 255, 255, 0.9)`,
+  blackWithOpacity: `rgba(0, 0, 0, 0.9)`,
   black: '#050505',
   transparent: 'transparent',
   highlight: '#76E05A',

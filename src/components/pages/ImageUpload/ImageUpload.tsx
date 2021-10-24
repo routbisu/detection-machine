@@ -9,6 +9,7 @@ import { TextInput } from '../../../components/layout/Form'
 import Button from '../../layout/Button'
 import usePrediction, { Prediction } from '../../../hooks/usePrediction'
 import { v4 as uuidv4 } from 'uuid'
+import { getTimeFromUnixTimestamp } from '../../../utils/time'
 import { ButtonsContainer, PredictButtonSection } from './styles'
 import Heading from '../../layout/Heading'
 
@@ -37,8 +38,8 @@ type ImageUploadProps = {
 const ImageUpload: React.FC<ImageUploadProps> = ({ onPredict, images, setImages }) => {
   const [selectedRows, setSelectedRows] = useState<string[]>([])
   const [showConfirmation, setShowConfirmation] = useState<boolean>(false)
-  const [title, setTitle] = useState<string>()
-  const [description, setDescription] = useState<string>()
+  const [title, setTitle] = useState<string>('')
+  const [description, setDescription] = useState<string>('')
   const [isSuccessful, setIsSuccessful] = useState<boolean>(false)
   const [selectedImages, setSelectedImages] = useState<Image[]>([])
 
@@ -49,7 +50,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onPredict, images, setImages 
       ? Array.from(files).map((file: any) => ({
           id: uuidv4(),
           name: file.name,
-          time: file.lastModified,
+          time: getTimeFromUnixTimestamp(file.lastModified),
           size: file.size,
           url: URL.createObjectURL(file),
           file: file,
@@ -78,7 +79,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onPredict, images, setImages 
         id: selectedImages[idx].id,
         title,
         description,
-        timestamp: Date.now(),
+        timestamp: getTimeFromUnixTimestamp(Date.now()),
         url: selectedImages[idx].url,
       }))
 

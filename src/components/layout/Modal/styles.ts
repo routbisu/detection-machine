@@ -8,7 +8,7 @@ export const ModalContainer = styled('div')`
   height: 100%;
   width: 100%;
   z-index: 500;
-  background: ${colors.whiteWithOpacity};
+  background: ${colors.blackWithOpacity};
 `
 
 export const ModalContent = styled('div')`
