@@ -1,6 +1,6 @@
 import { PropsWithChildren, useState, useEffect } from 'react'
 import Button from '../layout/Button'
-import { TableWrapper, SmallCell } from './styles'
+import { TableWrapper, SmallCell, NoData } from './styles'
 
 export type TableHeaderItem = {}
 
@@ -14,6 +14,8 @@ export type TableProps<T> = {
   }[]
   onSelect?: (selectedRowIds: string[]) => void
   onActionCall?: (selectedRowId: string) => void
+  // Text shown when table has no data
+  noDataText?: string
 }
 
 function Table<T extends { id: string }>({
@@ -21,6 +23,7 @@ function Table<T extends { id: string }>({
   headerItems,
   onSelect,
   onActionCall,
+  noDataText = 'No records found',
 }: PropsWithChildren<TableProps<T>>) {
   const [selectedRows, setSelectedRows] = useState<any>({})
 
@@ -76,7 +79,7 @@ function Table<T extends { id: string }>({
               {headerItems.map(({ key, actionButtonText }, j) =>
                 actionButtonText ? (
                   <SmallCell key={j}>
-                    <Button size="small" onClick={() => onActionCall && onActionCall(row.id)}>
+                    <Button size="small" variant="secondary" onClick={() => onActionCall && onActionCall(row.id)}>
                       {actionButtonText}
                     </Button>
                   </SmallCell>
@@ -87,7 +90,11 @@ function Table<T extends { id: string }>({
             </tr>
           ))
         ) : (
-          <p>No Record found</p>
+          <tr>
+            <td colSpan={headerItems.length + 2}>
+              <NoData>{noDataText}</NoData>
+            </td>
+          </tr>
         )}
       </tbody>
     </TableWrapper>

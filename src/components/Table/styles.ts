@@ -36,3 +36,12 @@ export const TableWrapper = styled('table')`
 export const SmallCell = styled('td')`
   width: ${space[0.5]};
 `
+
+export const NoData = styled('div')`
+  background: ${colors.yellow[100]};
+  padding: ${space[2]};
+  border: 1px solid ${colors.yellow[300]};
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+`

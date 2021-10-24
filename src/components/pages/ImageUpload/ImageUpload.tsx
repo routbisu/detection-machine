@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Section from '../../layout/Section'
 import Table from '../../../components/Table/Table'
 import UploadButton from '../../../components/UploadButton/UploadButton'
 import Button from '../../layout/Button'
+import { v4 as uuidv4 } from 'uuid'
 import { ButtonsContainer, PredictButtonSection } from './styles'
 
 const imageTableHeaders: any = [
@@ -19,20 +20,22 @@ type TableDataProps = {
   time: string
 }
 
-const tableData = [
-  { id: '1', name: 'Name1', size: '120', time: '23 Aug' },
-  { id: '2', name: 'Name1', size: '120', time: '23 Aug' },
-  { id: '3', name: 'Name1', size: '120', time: '23 Aug' },
-  { id: '4', name: 'Name1', size: '120', time: '23 Aug' },
-  { id: '5', name: 'Name1', size: '120', time: '23 Aug' },
-  { id: '6', name: 'Name1', size: '120', time: '23 Aug' },
-]
-
 const ImageUpload: React.FC = () => {
+  const [images, setImages] = useState<TableDataProps[]>([])
+
+  const handleFileUpload = (files: FileList | null) => {
+    const uploadedFiles = files
+      ? Array.from(files).map(({ name, lastModified, size }: any) => ({ id: uuidv4(), name, time: lastModified, size }))
+      : []
+
+    setImages(uploadedFiles)
+  }
+
   return (
     <Section>
       <ButtonsContainer>
-        <UploadButton onChange={(files) => console.log('files', files)}>Upload Image(s)</UploadButton>
+        <UploadButton onChange={handleFileUpload}>Upload Image(s)</UploadButton>
+
         <PredictButtonSection>
           <Button variant="secondary" disabled>
             Predict
@@ -43,7 +46,13 @@ const ImageUpload: React.FC = () => {
         </PredictButtonSection>
       </ButtonsContainer>
 
-      <Table<TableDataProps> headerItems={imageTableHeaders} data={tableData} onSelect={(rows) => console.log(rows)} />
+      <Table<TableDataProps>
+        noDataText="No images uploaded"
+        headerItems={imageTableHeaders}
+        data={images}
+        onSelect={(rows) => console.log(rows)}
+        onActionCall={(id) => console.log('id', id)}
+      />
     </Section>
   )
 }
